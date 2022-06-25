@@ -5,6 +5,8 @@ ip=$(/sbin/ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)
 #run smts server
 python3 smts/server/smts.py -p &
 
+sleep 1
+
 #run lemma_server
 smts/build/lemma_server -s$ip:3000 &
 
