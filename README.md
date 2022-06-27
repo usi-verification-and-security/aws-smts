@@ -12,23 +12,24 @@ Docker should be installed on the machine.
 
 The cube-and-conquer docker images are built on top of the base containers smtcomp-base:leader and smtcomp-base:worker.
 
-Please follow the steps in this repository up to the point at which the base containers have been built.  
+The process of building these base images (as well as many other aspects of building solvers for SAT-Comp) is described in the README.md file in the [https://github.com/aws-samples/aws-batch-comp-infrastructure-sample](https://github.com/aws-samples/aws-batch-comp-infrastructure-sample) repository.
+Please follow the steps in this repository up to the point at which the base containers have been built.
 
 ## How to Build
 
 To build the cube-and-conquer base container:
 
 1. Navigate to the `base` subdirectory.
-2. Run `docker build -t smts-caq-base .`
+2. Run `docker build -t smtscq-base .`
 
 To build the cube-and-conquer leader container:
 
 1. Navigate to the `leader` subdirectory.
-2. Run `docker build -t smts-caq:leader .`
+2. Run `docker build -t smtscq:leader .`
 
 To build the cube-and-conquer worker container:
 
 1. Navigate to the `worker` subdirectory.
-2. Run `docker build -t smts-caq:worker .`
+2. Run `docker build -t smtscq:worker .`
 
 After building both images, run `docker image ls` and make sure you see both `smts:leader` and `smts:worker` in the list of images.

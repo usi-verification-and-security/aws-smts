@@ -1,5 +1,5 @@
 ################### Use smts
-FROM smts-base AS builder
+FROM smtscq-base AS builder
 USER root
 
 
