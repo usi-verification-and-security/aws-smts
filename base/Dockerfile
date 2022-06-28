@@ -19,7 +19,7 @@ RUN bash bin/make_smts.sh && cd ..
 RUN rm -rf graphviz
 RUN rm -rf gui
 RUN rm -rf build/_deps/ptplib-src/tests
-RUN rm -rf lib
+RUN rm -rf build/lib
 RUN rm -rf build/_deps/opensmt-src/regression* && rm -rf build/_deps/opensmt-src/benchmark && \
     rm -rf build/_deps/opensmt-src/docs && rm -rf build/_deps/opensmt-src/examples
 
