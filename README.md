@@ -17,19 +17,7 @@ Please follow the steps in this repository up to the point at which the base con
 
 ## How to Build
 
-To build the cube-and-conquer base container:
+To build the entire cube-and-conquer containers and push them to ecr:
 
-1. Navigate to the `base` subdirectory.
-2. Run `docker build -t smtscq-base .`
+1. Run the `buildAndPush_docker_images.sh`.
 
-To build the cube-and-conquer leader container:
-
-1. Navigate to the `leader` subdirectory.
-2. Run `docker build -t smtscq:leader .`
-
-To build the cube-and-conquer worker container:
-
-1. Navigate to the `worker` subdirectory.
-2. Run `docker build -t smtscq:worker .`
-
-After building both images, run `docker image ls` and make sure you see both `smts:leader` and `smts:worker` in the list of images.
