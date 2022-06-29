@@ -9,7 +9,6 @@ RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt install -y apt-utils \
      build-essential libgmp-dev bison flex
 
-
 WORKDIR /
 
 # Copy smts and solver scripts

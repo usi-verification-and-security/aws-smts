@@ -1,34 +1,31 @@
 # /bin/sh
 
-if [[ $# -lt 2 ]]; then
-    echo "Usage: $0 <Tools Name> <Account Number>";
-    echo "Hint for cube-and-conquer:  $0 smtscq <Account Number>";
-    echo "Hint for SMTS-portfolio:  $0 smtsp <Account Number>";
+if [[ $# -lt 1 ]]; then
+    echo "Usage: $0 <Account Number>";
     exit 1;
 fi
-t_name=$1
-a_num=$2
+a_num=$1
 
-echo "Building ${t_name} base docker image ..."
+echo "Building smtscq base docker image ..."
 cd base
-docker build -t ${t_name}-base .
+docker build -t smtscq-base .
 
-echo "Building and Tagging ${t_name}-leader docker image ..."
+echo "Building and Tagging smtscq-leader docker image ..."
 cd ../leader
-docker build -t ${t_name}:leader .
-docker tag ${t_name}:leader ${a_num}.dkr.ecr.us-east-2.amazonaws.com/${t_name}-leader
+docker build -t smtscq:leader .
+docker tag smtscq:leader ${a_num}.dkr.ecr.us-east-2.amazonaws.com/smtscq-leader
 
-echo "Building and Tagging ${t_name}-worker docker image ..."
+echo "Building and Tagging smtscq-worker docker image ..."
 cd ../worker
-docker build -t ${t_name}:worker .
-docker tag ${t_name}:worker ${a_num}.dkr.ecr.us-east-2.amazonaws.com/${t_name}-worker
+docker build -t smtscq:worker .
+docker tag smtscq:worker ${a_num}.dkr.ecr.us-east-2.amazonaws.com/smtscq-worker
 
 echo "List Of docker images:"
 docker image ls
 
-#echo "Login attempt to aws ..."
-#aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin ${a_num}.dkr.ecr.us-east-2.amazonaws.com
+echo "Login attempt to aws ..."
+aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin ${a_num}.dkr.ecr.us-east-2.amazonaws.com
 
 echo "Push docker images to ECR ..."
-docker push ${a_num}.dkr.ecr.us-east-2.amazonaws.com/${t_name}-worker
-docker push ${a_num}.dkr.ecr.us-east-2.amazonaws.com/${t_name}-leader
+docker push ${a_num}.dkr.ecr.us-east-2.amazonaws.com/smtscq-worker
+docker push ${a_num}.dkr.ecr.us-east-2.amazonaws.com/smtscq-leader

@@ -14,6 +14,5 @@ WORKDIR /
 # Copy smts
 COPY --from=builder /SMTS SMTS
 COPY --chown=ecs-user /worker /competition
-# COPY --chown=ecs-user /run_clients.sh /competition
 
 RUN chmod +x /competition/worker
