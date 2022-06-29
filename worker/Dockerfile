@@ -1,5 +1,5 @@
 ################### Use SMTS
-FROM smtscq-base AS builder
+FROM smtsp-base AS builder
 USER root
 
 ################### Extract SMTS in run stage

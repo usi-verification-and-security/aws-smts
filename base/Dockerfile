@@ -13,7 +13,7 @@ RUN apt-get update \
      build-essential libgmp-dev bison flex git python3
 
 
-RUN git clone https://github.com/usi-verification-and-security/SMTS.git --branch cube-and-conquer --single-branch
+RUN git clone https://github.com/usi-verification-and-security/SMTS.git --branch portfolio --single-branch
 WORKDIR SMTS
 RUN bash bin/make_smts.sh && cd ..
 RUN rm -rf graphviz
