@@ -1,5 +1,5 @@
 ################### Use SMTS
-FROM smtsp-base AS builder
+FROM csmtsp-base AS builder
 USER root
 
 ################### Extract SMTS in run stage
