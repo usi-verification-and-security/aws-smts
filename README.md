@@ -1,4 +1,4 @@
-# SMTComp Parallel cube-and-conquer Solver 
+# SMTComp Parallel cube-and-conquer Solver
 
 This repository contains two Dockerfiles that build the cube-and-conquer distributed solver using the SMT-Comp 2022 infrastructure.  It is intended to be used for teams to understand how to build solvers for SMT-Comp.
 
@@ -8,7 +8,7 @@ Web Page: [Link](http://verify.inf.usi.ch/opensmt2)
 
 ## Prerequisites
 
-Docker should be installed on the machine.  
+Docker should be installed on the machine.
 
 The cube-and-conquer docker images are built on top of the base containers smtcomp-base:leader and smtcomp-base:worker.
 
