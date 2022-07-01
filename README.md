@@ -19,5 +19,5 @@ Please follow the steps in this repository up to the point at which the base con
 
 To build the entire cube-and-conquer containers and push them to ecr:
 
-1. Run the `buildAndPush_docker_images.sh <Account Number>`.
+1. Run the `buildAndPush_docker_images.sh <Account Number> <Region>`.
 
