@@ -16,17 +16,11 @@ cd ../leader
 docker build -t psmtsp:leader .
 docker tag psmtsp:leader ${a_num}.dkr.ecr.${region}.amazonaws.com/psmtsp-leader
 
-echo "Building and Tagging psmtsp-worker docker image ..."
-cd ../worker
-docker build -t psmtsp:worker .
-docker tag psmtsp:worker ${a_num}.dkr.ecr.${region}.amazonaws.com/psmtsp-worker
-
 echo "List Of docker images:"
 docker image ls
 
 echo "Login attempt to aws ..."
 aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${a_num}.dkr.ecr.${region}.amazonaws.com
 
-echo "Push docker images to ECR ..."
-docker push ${a_num}.dkr.ecr.${region}.amazonaws.com/psmtsp-worker
+echo "Push leader docker image to ECR ..."
 docker push ${a_num}.dkr.ecr.${region}.amazonaws.com/psmtsp-leader
