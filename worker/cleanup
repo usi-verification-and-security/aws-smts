@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Cleaning up: Killing solver_opensmt processes if exist!"
+pkill solver_opensmt

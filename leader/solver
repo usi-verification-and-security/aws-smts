@@ -5,6 +5,8 @@ import os
 import subprocess
 import sys
 import threading
+import socket
+import string
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
@@ -53,25 +55,29 @@ class Runner:
         with open(input) as f:
             return json.loads(f.read())
 
-    def create_hostfile(self,ips, request_dir):
+    def create_hostfile(self, ips, leader_ip, request_dir):
+        totalWorkerNodes=0
         hostfile_path = os.path.join(request_dir, 'combined_hostfile')
         with open(hostfile_path, 'w+') as f:
             for ip in ips:
-                f.write(f'{ip}')
-                f.write('\n')
-            return hostfile_path
+                if ip != leader_ip:
+                    totalWorkerNodes += 1
+                    f.write(f'{ip}')
+                    f.write('\n')
+            return hostfile_path, totalWorkerNodes
 
     def get_command(self, input_json):
         problem_path = input_json.get("problem_path")
         worker_node_ips = input_json.get("worker_node_ips", [])
+        leader_ip = socket.gethostbyname(socket.gethostname())
         # leader_ip = input_json.get("leaderIp")
 
-        combined_hostfile = self.create_hostfile(worker_node_ips, self.request_directory)
+        combined_hostfile, totalWorkerNodes = self.create_hostfile(worker_node_ips, leader_ip, self.request_directory)
 
         run_list = ["/competition/run_smts.sh"]
         run_list.append(combined_hostfile)
         run_list.append(problem_path)
-        # run_list.append(leader_ip)
+        run_list.append(str(totalWorkerNodes))
 
         return run_list
 
@@ -85,10 +91,10 @@ class SMTSParser:
                 return "UNSATISFIABLE"
             elif "sat" in raw_logs or "SAT" in raw_logs:
                 return "SATISFIABLE"
-            elif "UNKNOWN" in raw_logs or "unknown" in raw_logs:
-                return "UNKNOWN"
-            else:
+            elif "error" in raw_logs or ";error" in raw_logs:
                 return "ERROR"
+            else:
+                return "UNKNOWN"
 
 if __name__ == "__main__":
     request_directory = sys.argv[1]
