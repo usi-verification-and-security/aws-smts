@@ -18,6 +18,6 @@ Please follow the steps in this repository up to the point at which the base con
 ## How to Build and Push The Images To ECR
 
 To build the entire cube-and-conquer containers and push them to ecr:
-
+(Dockers will be built with the PROJECT_NAME : psmtscq)
 1. Run the `buildAndPush_docker_images.sh <Account Number> <Region>`.
 
