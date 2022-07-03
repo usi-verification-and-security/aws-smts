@@ -1,6 +1,6 @@
 # SMTComp Cloud cube-and-conquer Solver 
 
-This repository contains two Dockerfiles that build the cube-and-conquer distributed solver using the SMT-Comp 2022 infrastructure.  It is intended to be used for teams to understand how to build solvers for SMT-Comp.
+This repository contains two Dockerfiles that build the cube-and-conquer distributed solver using the SMT-Comp 2022 infrastructure.
 
 Repository: [Link](https://github.com/usi-verification-and-security/SMTS/tree/cube-and-conquer)
 
