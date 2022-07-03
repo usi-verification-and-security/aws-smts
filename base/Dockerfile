@@ -6,7 +6,6 @@ ENV CMAKE_BUILD_TYPE Release
 ENV USE_READLINE OFF
 ENV ENABLE_LINE_EDITING OFF
 ENV PARALLEL ON
-ENV FLAGS -Wall
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt install -y apt-utils make cmake \
