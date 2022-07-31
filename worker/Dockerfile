@@ -16,5 +16,6 @@ COPY --from=builder /SMTS SMTS
 COPY --chown=ecs-user /worker /competition
 
 RUN chmod +x /competition/worker
-COPY cleanup /competition/cleanup
+COPY --chown=ecs-user cleanup /competition/cleanup
+USER ecs-user
 RUN chmod +x /competition/cleanup
