@@ -1,5 +1,26 @@
 # SMTComp Cloud cube-and-conquer Solver 
 
+First start by downloading aws-backend infrastructure:
+`./download_aws_infrastructure.sh`
+
+Run the following command to get ami:
+```text
+aws --profile usiverify  ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/recommended
+```
+
+To set up the account resources for cloud track, run the create-solver-infrastructure script:
+```text 
+./create-solver-infrastructure --profile [usiverify] --project [smtscq] --instance m6i.4xlarge --memory 61000 --ami [ami-014ddabf5947b9cbe]
+```
+
+To set up the account resources for cloud track, run the create-solver-infrastructure script:
+```text
+./create-solver-infrastructure --profile usiverify --project smtscq --instance m6i.16xlarge --memory 253000 --ami ami-014ddabf5947b9cbe --update True
+```
+
+Creating the base docker Leader and Worker images for solvers:
+Then `cd aws-batch-comp-infrastructure-sample/src` and run the `build_docker_images.sh`
+
 This repository contains two Dockerfiles that build the cube-and-conquer distributed solver using the SMT-Comp 2022 infrastructure.
 
 Repository: [Link](https://github.com/usi-verification-and-security/SMTS/tree/cube-and-conquer)
