@@ -1,23 +1,15 @@
-# SMTComp Parallel cube-and-conquer-fixed Solver
+# SMTComp Parallel cube-and-conquer Solver
 
-This repository contains two Dockerfiles that build the cube-and-conquer-fixed distributed solver using the SMT-Comp 2022 infrastructure.
+##Setup
+To set up the account resources for parallel track, run the create-solver-infrastructure script:
 
-Repository: [Link](https://github.com/usi-verification-and-security/SMTS/tree/cube-and-conquer-fixed)
+```text
+./create-solver-infrastructure --profile usiverify --project smtscq --instance m6i.16xlarge --memory 253000 --ami ami-014ddabf5947b9cbe --update True
+```
 
-Web Page: [Link](http://verify.inf.usi.ch/opensmt2)
+## Build and Push The Images To ECR
 
-## Prerequisites
-
-Docker should be installed on the machine.
-
-The cube-and-conquer-fixed docker images are built on top of the base containers smtcomp-base:leader and smtcomp-base:worker.
-
-The process of building these base images (as well as many other aspects of building solvers for SAT-Comp) is described in the README.md file in the [https://github.com/aws-samples/aws-batch-comp-infrastructure-sample](https://github.com/aws-samples/aws-batch-comp-infrastructure-sample) repository.
-Please follow the steps in this repository up to the point at which the base containers have been built.
-
-## How to Build and Push The Images To ECR
-
-To build the entire cube-and-conquer-fixed containers and push them to ecr:
+To build the entire cube-and-conquer containers and push them to ecr:
 (Dockers will be built with the PROJECT_NAME : psmtscq)
 1. Run the `buildAndPush_docker_images.sh <Account Number> <Region>`.
 
