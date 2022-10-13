@@ -31,18 +31,19 @@ To set up the account resources for cloud track, run the create-solver-infrastru
 ./create-solver-infrastructure --profile [usiverify] --project [smtscq] --instance m6i.4xlarge --memory 61000 --ami [ami-014ddabf5947b9cbe]
 ```
 
-To set up the account resources for cloud track, run the create-solver-infrastructure script:
-```text
-./create-solver-infrastructure --profile usiverify --project smtscq --instance m6i.16xlarge --memory 253000 --ami ami-014ddabf5947b9cbe --update True
-```
+To set up the account resources and scripts for building and running SMTS on the parallel track we have provided a different branch as follows:
 
-Creating the base docker Leader and Worker images for solvers:
-Then `cd aws-batch-comp-infrastructure-sample/src` and run the `build_docker_images.sh`
+Parallel [Link](https://github.com/usi-verification-and-security/aws-smts/tree/parallel-cube-and-conquer)
+
+To create the base docker Leader and Worker images for solvers run the following command:
+`cd aws-batch-comp-infrastructure-sample/src` && `build_docker_images.sh`
 
 To build the entire cube-and-conquer containers and push them to ecr:
 
 (Dockers will be built with the PROJECT_NAME : smtscq)
- Run the `buildAndPush_docker_images.sh <Account Number> <Region>`.
+
+
+Run the `buildAndPush_docker_images.sh <Account Number> <Region>`.
 
 ## How to Run
 First make sure you have instance at your s3 bucket by:
