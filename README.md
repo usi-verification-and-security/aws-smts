@@ -1,5 +1,9 @@
 # SMTComp Cloud cube-and-conquer Solver 
-This repository contains two Dockerfiles that build the cube-and-conquer distributed solver using the SMT-Comp 2022 infrastructure.
+
+This project provides scripts to build AWS resources including the Elastic Compute Cloud (EC2) service, the Elastic Container Registry (ECR) service, the Elastic Container Service (ECS) service, the Simple Storage Service, the Elastic File System (EFS) service, and  Simple Queue Service by which we will be building and running our solvers.
+
+
+To simplify the solver construction process, two base Docker images are provided that manage most of the infrastructure necessary for solvers and interface to AWS resources which are described in the README.md file in the [https://github.com/aws-samples/aws-batch-comp-infrastructure-sample](https://github.com/aws-samples/aws-batch-comp-infrastructure-sample) repository.
 
 Repository: [Link](https://github.com/usi-verification-and-security/SMTS/tree/cube-and-conquer)
 
@@ -12,11 +16,6 @@ Web Page: [Link](http://verify.inf.usi.ch/opensmt2)
 - [awscli](https://aws.amazon.com/cli/)
 - [boto3](https://aws.amazon.com/sdk-for-python/)
 - [docker](https://www.docker.com/)
-
-
-The process of building these base images (as well as many other aspects of building solvers for SAT-Comp) is described in the README.md file in the [https://github.com/aws-samples/aws-batch-comp-infrastructure-sample](https://github.com/aws-samples/aws-batch-comp-infrastructure-sample) repository.
-Please follow the steps in this repository up to the point at which the base containers have been built.
-
 
 ## How to Build
 First start by downloading aws-backend infrastructure:
